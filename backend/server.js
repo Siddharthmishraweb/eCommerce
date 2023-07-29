@@ -2,6 +2,7 @@
 
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import connectDB from './config/db.js';
 dotenv.config();
 import products from './data/products.js';
@@ -9,6 +10,9 @@ const PORT = process.env.PORT || 5000;
 connectDB() // starting mongodb
 
 const app = express();
+
+app.use(cors());
+
 
 app.use((req, res, next) => {
    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');

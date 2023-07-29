@@ -1,6 +1,5 @@
 const products = [
    {
-      _id:'1',
       name:'Airpods Headphone Mic Samsung Brand Laptop same Brand',
       image:'/images/airpods.jpg',
       description:'Bluetooth Technology is rising very rapidly and you will get a seamless connection wuthout using any wires which is a great innvovation',
@@ -12,7 +11,6 @@ const products = [
       numReviews: 12,
    },
    {
-      _id:'2',
       name:'Alexa',
       image:'/images/alexa.jpg',
       description:'Speech AI Technology is rising very rapidly and you will get a seamless connection wuthout using any wires which is a great innvovation',
@@ -24,7 +22,6 @@ const products = [
       numReviews: 17,
    },
    {
-      _id:'3',
       name:'Camera',
       image:'/images/camera.jpg',
       description:'Camera Technology is rising very rapidly and you will get a seamless connection wuthout using any wires which is a great innvovation',
@@ -36,7 +33,6 @@ const products = [
       numReviews: 223,
    },
    {
-      _id:'4',
       name:'Mouse',
       image:'/images/mouse.jpg',
       description:'Mouse Technology is rising very rapidly and you will get a seamless connection wuthout using any wires which is a great innvovation',
@@ -48,7 +44,6 @@ const products = [
       numReviews: 223,
    },
    {
-      _id:'5',
       name:'Phone',
       image:'/images/phone.jpg',
       description:'Samsung Phone Technology is rising very rapidly and you will get a seamless connection wuthout using any wires which is a great innvovation',
@@ -60,7 +55,6 @@ const products = [
       numReviews: 2213,
    },
    {
-      _id:'6',
       name:'PlayStation',
       image:'/images/playstation.jpg',
       description:'playstation Phone Technology is rising very rapidly and you will get a seamless connection wuthout using any wires which is a great innvovation',
