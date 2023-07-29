@@ -5,7 +5,8 @@ import Product from '../components/Product'
 import ProductScreen from '../screens/ProductScreen';
 import axios from 'axios';
 import { useGetProductsQuery } from '../slices/productsApiSlice';
-
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 const HomeScreen = () => {
    // const [products, setProducts] = useState([]);
 
@@ -24,8 +25,8 @@ const HomeScreen = () => {
    return(
       <div>
          { isLoading ? (
-            <h2> error </h2>
-         ) : error ? ( <div>{error?.data?.message || error ?.error}</div>) : (
+            <Loader />
+         ) : error ? ( <Message variant='danger'>{error?.data?.message || error ?.error}</Message>) : (
             <div>
                <h1>Latest Products</h1>
                <Row>
