@@ -3,9 +3,12 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import connectDB from './config/db.js';
 dotenv.config();
 import products from './data/products.js';
+import productRoutes from './routes/productRoute.js';
+
 const PORT = process.env.PORT || 5000;
 connectDB() // starting mongodb
 
@@ -25,15 +28,12 @@ app.get('/', function(req, res){
    res.send('API is running...')
 })
 
-app.get('/api/product', function(req, res){
-   res.json(products);
-});
+app.use('/api/products', productRoutes)
 
-app.get('/api/products/:id', function(req, res){
-   //console.log(req.params.id);
-   const product = products.find((p) => p._id === req.params.id )
-   res.json(product);
-})
+app.use(notFound)
+app.use(errorHandler)
+
+
 
 app.listen(PORT,function(err){
    if(err){
