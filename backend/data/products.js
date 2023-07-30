@@ -1,6 +1,6 @@
 const products = [
    {
-      name:'Airpods Headphone Mic Samsung Brand Laptop same Brand',
+      name:'Airpods',
       image:'/images/airpods.jpg',
       description:'Bluetooth Technology is rising very rapidly and you will get a seamless connection wuthout using any wires which is a great innvovation',
       brand:'Apple',
@@ -77,7 +77,7 @@ const products = [
       numReviews: 213,
    },
    {
-      name:'Mobile',
+      name:'iPhone',
       image:'/images/iphone.jpg',
       description:'15.40 cm (6.1-inch) Super Retina XDR display',
       brand:'Apple',
@@ -121,7 +121,7 @@ const products = [
       numReviews: 3,
    },
    {
-      name:'Gas',
+      name:'Samsung Mobile',
       image:'/images/smobile.webp',
       description:'16.72 centimeters (6.6-inch) LCD, FHD+ resolution with 1080 x 2408 pixels resolution, 401 PPI with 16M col',
       brand:'Samsung',
