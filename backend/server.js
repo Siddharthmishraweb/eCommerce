@@ -8,7 +8,7 @@ import connectDB from './config/db.js';
 dotenv.config();
 import products from './data/products.js';
 import productRoutes from './routes/productRoute.js';
-
+import userRoutes from './routes/userRoutes.js';
 const PORT = process.env.PORT || 5000;
 connectDB() // starting mongodb
 
@@ -28,7 +28,10 @@ app.get('/', function(req, res){
    res.send('API is running...')
 })
 
-app.use('/api/products', productRoutes)
+
+app.use('/api/products', productRoutes) 
+app.use('/api/users', userRoutes)
+
 
 app.use(notFound)
 app.use(errorHandler)
