@@ -1,5 +1,6 @@
 {
   "name": "ecommerce",
+  "proxy": "http://localhost:5000",
   "version": "1.0.0",
   "description": "An ecommerce website",
   "main": "server.js",
@@ -26,9 +27,12 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "mongoose": "^7.4.1"
+    "jsonwebtoken": "^9.0.1",
+    "mongoose": "^7.4.1",
+    "proxy": "^2.1.1"
   },
   "devDependencies": {
     "concurrently": "^8.2.0",
