@@ -29,7 +29,7 @@ const LoginScreen = () => {
     }
    },[userInfo, redirect, navigate]);
 
-   const submitHnadler = async(e) => {
+   const submitHandler = async(e) => {
     e.preventDefault();
     try {
       const res = await login({email, password}).unwrap();
@@ -40,10 +40,10 @@ const LoginScreen = () => {
     }
    }
 
-   const submitHandler = (e) => {
-      e.preventDefault();
-      console.log('Submit');
-   }
+  //  const submitHandler = (e) => {
+  //     e.preventDefault();
+  //     console.log('Submit');
+  //  }
 
   return (
     <FormContainer>
