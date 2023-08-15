@@ -10,6 +10,7 @@ dotenv.config();
 import products from './data/products.js';
 import productRoutes from './routes/productRoute.js';
 import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 const PORT = process.env.PORT || 5000;
 connectDB() // starting mongodb
 
@@ -37,6 +38,7 @@ app.get('/', function(req, res){
 
 app.use('/api/products', productRoutes) 
 app.use('/api/users', userRoutes)
+app.use('/api/orders', orderRoutes);
 
 
 app.use(notFound)
