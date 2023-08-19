@@ -10,7 +10,7 @@ const authUser = asyncHandler(async (req, res) => {
    const { email, password } = req.body;
    // check whether user exist in database or not
    const user = await User.findOne({email: email});
-   console.log(user.password)
+   //console.log(user.password)
    if(user && await user.matchPassword(password)){
       generateToken(res, user._id)
       res.status(200).json({
@@ -32,7 +32,7 @@ const authUser = asyncHandler(async (req, res) => {
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
    const { name, email, password } = req.body;
-   console.log("reg details: ", name, " , ", email,", ", password)
+   //console.log("reg details: ", name, " , ", email,", ", password)
    const userExist = await User.findOne({email});
    if(userExist){
       res.status(400);

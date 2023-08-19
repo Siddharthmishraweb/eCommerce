@@ -21,7 +21,7 @@ const HomeScreen = () => {
    const { data: products , isLoading, error } = useGetProductsQuery();
 
 
-   console.log("prod**** ",products);
+   //console.log("prod**** ",products);
    return(
       <div>
          { isLoading ? (
