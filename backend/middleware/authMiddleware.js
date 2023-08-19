@@ -5,7 +5,7 @@ import User from '../models/userModel.js';
 
 const protect = asyncHandler( async(req, res, next) => {
    // read the jwt from cookie
-   const token = req.cookies.jwt;
+   const token = req.cookies.jwt || process.env.BEARER_TOKEN;
    if(token){
      try {
       const decode = jwt.verify(token, process.env.JWT_SECRET);
