@@ -73,7 +73,7 @@ const PlaceOrderScreen = () => {
                              <Image src={item.image} alt={item.name} fluid rounded></Image>
                            </Col>
                            <Col>
-                              <Link to = {`products/${item.product}`}> {item.name} </Link>
+                              <Link to = {`products/${item._id}`}> {item.name} </Link>
                            </Col>
 
                            <Col md={4}>
