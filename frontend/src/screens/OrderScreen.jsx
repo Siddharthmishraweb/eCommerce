@@ -185,7 +185,7 @@ const OrderScreen = () => {
                      {isPending ? <Loader /> : (
                         
                         <div>
-                           <Button onClick={onApproveTest} style={{marginBottom:'10px'}}>Test</Button>
+                           {/* <Button onClick={onApproveTest} style={{marginBottom:'10px'}}>Test</Button> */}
                            <div>
                              <PayPalButtons
                                createOrder={createOrder}
