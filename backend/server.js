@@ -2,6 +2,7 @@
 
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
 import cookieParser from 'cookie-parser';
 dotenv.config();
 import cors from 'cors';
@@ -12,6 +13,7 @@ import products from './data/products.js';
 import productRoutes from './routes/productRoute.js';
 import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 const PORT = process.env.PORT || 5000;
 connectDB() // starting mongodb
 
@@ -41,6 +43,7 @@ app.get('/', function(req, res){
 app.use('/api/products', productRoutes) 
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes);
+app.use('/api/upload', uploadRoutes);
 
 // console.log("PAYPAL_CLIENT_ID:  ",process.env);
 
@@ -48,6 +51,8 @@ app.get('/api/config/paypal', (req, res) => {
    clientId:  process.env.PAYPAL_CLIENT_ID
 })
 
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 app.use(notFound)
 app.use(errorHandler)
