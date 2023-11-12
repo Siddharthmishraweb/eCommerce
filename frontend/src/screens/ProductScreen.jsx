@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Meta from '../components/Meta';
 import {
   useGetProductDetailsQuery,
   useCreateReviewMutation,
@@ -88,6 +89,7 @@ const ProductScreen = () => {
         </Message>
       ) : (
         <div>
+          <Meta title={product.name}/>
           <Row>
             <Col md={5}>
               <Image src={product.image} alt={product.name} fluid></Image>
