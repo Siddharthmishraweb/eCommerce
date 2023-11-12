@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Navbar, Badge, Nav, Container, NavDropdown } from "react-bootstrap";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
+import SearchBox from './SearchBox.jsx';
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { useSelector, useDispatch } from "react-redux";
@@ -40,6 +41,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
+              <SearchBox />
               <LinkContainer to="/cart">
                 <Nav.Link href="/cart">
                   <FaShoppingCart /> Cart

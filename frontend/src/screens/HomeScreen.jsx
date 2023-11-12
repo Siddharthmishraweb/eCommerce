@@ -1,6 +1,6 @@
 import { Row, Col } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import  {useParams} from 'react-router-dom';
+import  {Link, useParams} from 'react-router-dom';
 //import products from '../products'
 import Product from "../components/Product";
 import ProductScreen from "../screens/ProductScreen";
@@ -19,12 +19,14 @@ const HomeScreen = () => {
   //    }
   //    fetchProduct();
   // }, [])
-  const {pageNumber} = useParams();
-  const { data, isLoading, error } = useGetProductsQuery({ pageNumber });
+  const { pageNumber , keyword } = useParams();
+  const { data, isLoading, error } = useGetProductsQuery({ keyword, pageNumber });
+  console.log("*********  keyword  **********", keyword)
 
   //console.log("prod**** ",products);
   return (
     <div>
+      { keyword && <Link to='/' className="btn btn-light mb-4">Go Back</Link>}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -45,6 +47,7 @@ const HomeScreen = () => {
           <Paginate 
              pages={data.pages}
              page={data.page}
+             keyword = {keyword ? keyword :''}
           />
 
         </div>
