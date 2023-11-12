@@ -53,7 +53,7 @@ const UserListScreen = () => {
                 <td>{user.totalPrice}</td>
                 <td>{user.isAdmin ? <FaCheck style={{color:'green'}}/> : <FaTimes style={{color:'Red'}}/>}</td>
                 <td>
-                  <LinkContainer to={`admin/user/${user._id}/edit`}>
+                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
                     <Button className='btn-sm' variant='light'>
                       <FaEdit />
                     </Button>
