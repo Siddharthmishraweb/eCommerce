@@ -45,6 +45,15 @@ const PaymentScreen = () => {
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check>
+            <Form.Check
+              type="radio"
+              className="my-2"
+              label="UPI or Razorpay"
+              id="UPI"
+              name="paymentMethod"
+              value="UPI"
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            ></Form.Check>
           </Col>
         </Form.Group>
         <Button type="submit" variant="primary">

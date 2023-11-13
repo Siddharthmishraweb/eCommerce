@@ -8,6 +8,7 @@ dotenv.config();
 import cors from "cors";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import connectDB from "./config/db.js";
+import paymentRoute from './routes/payment.js';
 
 import products from "./data/products.js";
 import productRoutes from "./routes/productRoute.js";
@@ -39,6 +40,8 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/upload", uploadRoutes);
 
+
+app.use("/api/payment", paymentRoute);
 // console.log("PAYPAL_CLIENT_ID:  ",process.env);
 
 app.get("/api/config/paypal", (req, res) => {
