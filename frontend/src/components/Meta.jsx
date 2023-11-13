@@ -10,7 +10,7 @@ const Meta = ({ title, description, keywords }) => {
     );
 }
 Meta.defaultProps = {
-    title: 'Welcome to proshop',
+    title: 'Welcome to RapidBuy',
     description: 'We sell the best product at very best price',
     keywords: 'electronics, buy electronics , cheap electronics',
 };

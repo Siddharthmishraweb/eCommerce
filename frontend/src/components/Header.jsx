@@ -6,7 +6,7 @@ import SearchBox from './SearchBox.jsx';
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import { useSelector, useDispatch } from "react-redux";
-import logo from "../assets/logo.png";
+import logo from "../assets/cart.png";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -33,9 +33,9 @@ const Header = () => {
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>
-              <img src={logo} alt="" />
+              <img src={logo} alt="" style={{paddingRight:'6px', height: '36px', width:'50px'}}/>
               {/* Siya Fashion Hub */}
-              ProShop
+              RapidBuy
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
