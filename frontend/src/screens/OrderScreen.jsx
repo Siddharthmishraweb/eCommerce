@@ -4,6 +4,7 @@ import { Row, Col, ListGroup, Image, Button, Card } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { directCheckout } from "../helpers/helper";
 
 // import { PayPalButton } from '@paypal/react-paypal-js';
 
@@ -37,6 +38,54 @@ const OrderScreen = () => {
     error: errorPayPal,
   } = useGetPayPalClientIdQuery();
   const { userInfo } = useSelector((state) => state.auth);
+
+  const checkoutRazorpay = data => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    document.head.appendChild(script);
+    console.log("Razorpay script:", window.Razorpay);
+    console.log("***********  data   ************", data)
+    var options = {
+      key: "rzp_test_XI32gjxTCCD797", 
+      amount:  order.totalPrice * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      currency: "INR",
+      name: "RapidBuy",
+      description: "Test Transaction with Razorpay payment gateway",
+      image: "https://cdn-icons-png.flaticon.com/128/2331/2331970.png",
+      order_id: data.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      handler: function (response) {
+        console.log("*******  response  *  ****** ",response);
+        console.log(response.razorpay_payment_id);
+        console.log(response.razorpay_order_id);
+        console.log(response.razorpay_signature);
+        alert("Payment success!");
+      },
+      // prefill: {
+      //   name: "Gaurav Kumar",
+      //   email: "gaurav.kumar@example.com",
+      //   contact: "9999999999",
+      // },
+      notes: {
+        address: "Razorpay Corporate Office",
+      },
+      theme: {
+        color: "#61dafb",
+      },
+    };
+    let rzp1 = new window.Razorpay(options);
+    rzp1.on("payment.failed", function (response) {
+      console.log(response.error.code);
+      console.log(response.error.description);
+      console.log(response.error.source);
+      console.log(response.error.step);
+      console.log(response.error.reason);
+      console.log(response.error.metadata.order_id);
+      console.log(response.error.metadata.payment_id);
+      alert(response.error.description);
+    });
+    rzp1.open();
+  };
 
   useEffect(() => {
     if (!errorPayPal && !loadingPayPal && paypal.clientId) {
@@ -97,6 +146,15 @@ const OrderScreen = () => {
       .then((orderId) => {
         return orderId;
       });
+  }
+
+  const upiHandler = () => {
+    const res = order;
+    console.log("******** res  ********", res);
+    directCheckout(res).then(response => {
+      console.log({ response });
+      checkoutRazorpay(response);
+    });
   }
 
   const deliverOrderHandler = async () => {
@@ -213,11 +271,15 @@ const OrderScreen = () => {
                     <div>
                       {/* <Button onClick={onApproveTest} style={{marginBottom:'10px'}}>Test</Button> */}
                       <div>
-                        <PayPalButtons
-                          createOrder={createOrder}
-                          onApprove={onApprove}
-                          onError={onError}
-                        ></PayPalButtons>
+                        {
+                          order.paymentMethod === 'UPI' ? 
+                          <button onClick={upiHandler} style={{ backgroundColor:'#61dafb', color: 'black', padding:'14px 18px', borderRadius: '5px', border: 'none', width: '100%', fontWeight:'600'}}>Pay Now</button> :
+                          <PayPalButtons
+                            createOrder={createOrder}
+                            onApprove={onApprove}
+                            onError={onError}
+                         ></PayPalButtons>
+                        }
                       </div>
                     </div>
                   )}
