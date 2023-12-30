@@ -122,8 +122,8 @@ import { Link } from "react-router-dom";
 const ProductCarousel = () => {
     const { data: products, isLoading, error } = useGetTopProductsQuery();
 
-    return isLoading ? <Loader /> : error ? <Message variant='danger'>{error}</Message>
-        : (
+    return error ? <Message variant='danger'>{error}</Message>
+        : !isLoading && (
             <Carousel pause='hover' className="mb-4" style={carouselStyle}>
                 {
                     products.map(product => (
