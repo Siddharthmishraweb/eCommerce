@@ -73,7 +73,17 @@ const ProductScreen = () => {
           <Meta title={product.name}/>
           
           <Row>
-            <div style={{display:"flex", width:"45vw", height:"25rem"}}>
+            <div style={{
+              display: "flex",
+              width: "45vw",
+              height: "25rem",
+              "@media (maxWidth: 768px)": {
+                width: "100%" 
+              },
+              "@media (maxWidth: 992px)": {
+                width: "100%" 
+              }
+            }}>
               <Col md={4} className="image-thumbnails overflow-auto" style={{width:"7rem"}}>
                 {product.image.map((image, index) => (
                   <Image

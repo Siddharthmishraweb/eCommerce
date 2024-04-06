@@ -17,7 +17,6 @@ router.get("/", (req, res) => {
 
 router.post("/direct-checkout", (req, res) => {
   let productDetails = req.body;
-  console.log("***********   productDetails  *********",productDetails)
   razorpayInstance.orders.create(
     {
       amount: productDetails.totalPrice * 100,

@@ -121,7 +121,6 @@ router.post('/', (req, res) => {
     if (!req.files || req.files.length === 0) {
       return res.status(400).send({ message: 'No files uploaded' });
     }
-    console.log("hahahahhahahaha", req.files);
 
     const uploadedImages = req.files.map(file => {
       const relativeImagePath = path.relative(__dirname, file.path);
