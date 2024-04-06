@@ -53,6 +53,12 @@ const ProductScreen = () => {
 
   const [selectedImage, setSelectedImage] = useState(product?.image[0]);
 
+  useEffect(() => {
+    if (product) {
+      setSelectedImage(product?.image[0]);
+    }
+  }, [product]);
+
   const handleImageClick = (image) => {
     setSelectedImage(image);
   };
@@ -63,7 +69,7 @@ const ProductScreen = () => {
         Go Back
       </Link>
 
-      {isLoading ? (
+      {isLoading && !product ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">
