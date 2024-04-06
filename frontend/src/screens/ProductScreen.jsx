@@ -10,6 +10,7 @@ import { useGetProductDetailsQuery, useCreateReviewMutation } from "../slices/pr
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { addToCart } from "../slices/cartSlice";
+import "./ProductScreen.css"
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -73,17 +74,7 @@ const ProductScreen = () => {
           <Meta title={product.name}/>
           
           <Row>
-            <div style={{
-              display: "flex",
-              width: "45vw",
-              height: "25rem",
-              "@media (maxWidth: 768px)": {
-                width: "100%" 
-              },
-              "@media (maxWidth: 992px)": {
-                width: "100%" 
-              }
-            }}>
+          <div className="flex-container">
               <Col md={4} className="image-thumbnails overflow-auto" style={{width:"7rem"}}>
                 {product.image.map((image, index) => (
                   <Image
