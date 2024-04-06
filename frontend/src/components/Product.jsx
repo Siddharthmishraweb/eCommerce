@@ -36,7 +36,7 @@ import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
 
 const Product = ({ product }) => {
-  console.error("product    ", product);
+  
 
   const renderCarouselItems = () => {
     return product?.image?.slice(0, 5).map((image, index) => (
