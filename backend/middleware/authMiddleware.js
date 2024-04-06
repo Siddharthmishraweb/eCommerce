@@ -2,9 +2,16 @@ import jwt from "jsonwebtoken";
 // import asyncHandler from './asyncHandler';
 import asyncHandler from "./asyncHandler.js";
 import User from "../models/userModel.js";
+import NodeCache from "node-cache";
+const tokenCache = new NodeCache();
 
 const protect = asyncHandler(async (req, res, next) => {
   // read the jwt from cookie
+  console.log("req.cookies_________________", req.cookies);
+  const userId = tokenCache.keys().find((key) => tokenCache.get(key) === token);
+  const exam = tokenCache.get("userId");
+  console.log("exam____________________________________", exam);
+  console.log("userid+++++++++++++", userId);
   const token = req.cookies.jwt || process.env.BEARER_TOKEN;
   if (token) {
     try {

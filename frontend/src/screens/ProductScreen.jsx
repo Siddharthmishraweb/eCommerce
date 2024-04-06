@@ -1,40 +1,17 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-// import products from '../products';
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Card,
-  Button,
-  Form,
-  ListGroupItem,
-} from "react-bootstrap";
+import { Row, Col, Image, ListGroup, Card, Button, Form, ListGroupItem } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Meta from '../components/Meta';
-import {
-  useGetProductDetailsQuery,
-  useCreateReviewMutation,
-} from "../slices/productsApiSlice";
+import { useGetProductDetailsQuery, useCreateReviewMutation } from "../slices/productsApiSlice";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { addToCart } from "../slices/cartSlice";
 
 const ProductScreen = () => {
-  // const [product, setProduct] = useState([]);
-  // const {id: productId } = useParams();
-
-  // useEffect(() => {
-  //    const fetchProduct = async () => {
-  //       const { data } = await axios.get(`/api/products/${productId}`);
-  //       setProduct(data);
-  //    }
-  //    fetchProduct();
-  // }, [])
   const { id: productId } = useParams();
   const {
     data: product,
@@ -43,9 +20,7 @@ const ProductScreen = () => {
     error,
   } = useGetProductDetailsQuery(productId);
 
-  const [createReview, { isLoading: loadingProductReview }] =
-    useCreateReviewMutation();
-
+  const [createReview, { isLoading: loadingProductReview }] = useCreateReviewMutation();
   const { userInfo } = useSelector((state) => state.auth);
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -75,6 +50,12 @@ const ProductScreen = () => {
     }
   };
 
+  const [selectedImage, setSelectedImage] = useState(product?.image[0]);
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+  };
+
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
@@ -90,10 +71,29 @@ const ProductScreen = () => {
       ) : (
         <div>
           <Meta title={product.name}/>
+          
           <Row>
-            <Col md={5}>
-              <Image src={product.image} alt={product.name} fluid></Image>
-            </Col>
+            <div style={{display:"flex", width:"45vw", height:"25rem"}}>
+              <Col md={4} className="image-thumbnails overflow-auto" style={{width:"7rem"}}>
+                {product.image.map((image, index) => (
+                  <Image
+                    key={index}
+                    src={image}
+                    alt={product.name}
+                    fluid
+                    className={`product-thumbnail ${
+                      image === selectedImage ? 'selected' : ''
+                    }`}
+                    onClick={() => handleImageClick(image)}
+                    style={{ border: '1px solid lightgrey' }}
+                  />
+                ))}
+              </Col>
+              <Col md={5} className="main-image" style={{width: "53%"}}>
+                <Image src={selectedImage} alt={product.name} fluid style={{height:"22rem", width:"100%"}}/>
+              </Col>
+            </div>
+          
             <Col md={4}>
               <ListGroup variant="flush">
                 <ListGroup.Item>{product.name}</ListGroup.Item>
