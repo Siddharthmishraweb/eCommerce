@@ -90,7 +90,8 @@ const ProductScreen = () => {
                   />
                 ))}
               </Col>
-              <Col md={5} className="main-image" style={{width: "53%"}}>
+              {/* <Col md={5} className="main-image" style={{width: "53%"}}> */}
+              <Col className="main-image" >
                 <Image src={selectedImage} alt={product.name} fluid style={{height:"22rem", width:"100%"}}/>
               </Col>
             </div>
