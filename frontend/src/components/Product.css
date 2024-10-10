@@ -1,0 +1,121 @@
+.product-card {
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+    height: auto;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .product-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    overflow: hidden;
+  }
+  
+  .product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    padding: 0px;
+    display: flex;
+    flex-direction: column
+    /* padding: 8px 0;
+    text-align: center; */
+  }
+  
+  .product-title {
+    font-size: 10px;
+    font-weight: 600;
+    color: #333;
+    padding: 0px
+    /* margin-bottom: 4px; */
+  }
+  
+  .product-price {
+    font-size: 13px;
+    color: #888;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+
+/* General card styling */
+.product-card {
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+    height: auto;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    font-family: 'Montserrat', sans-serif; /* Professional, modern font */
+  }
+  
+  .product-card:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Image container styling */
+  .product-image-container {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    height: "60%";
+    /* overflow: hidden; */
+    /* background-color: #f7f7f7; */
+  }
+  
+  .product-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Product info styling */
+  .product-info {
+    /* padding: 10px 5px;
+    text-align: center; */
+  }
+  
+  /* Title styling */
+  .product-title {
+    /* font-size: 16px; */
+    font-weight: 700;
+    color: #333;
+    /* margin-bottom: 6px; */
+    text-transform: capitalize;
+    /* letter-spacing: 0.5px; */
+  }
+  
+  /* Price styling */
+  .product-price {
+    /* font-size: 14px; */
+    font-weight: 600;
+    margin-bottom: 0;
+    /* letter-spacing: 0.3px; */
+  }
+  
+  /* Typography */
+  body {
+    font-family: 'Roboto', sans-serif; /* Backup modern font in case Montserrat isn't loaded */
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #ff6347;
+  }
+  
+  
